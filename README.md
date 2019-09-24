@@ -1,5 +1,5 @@
 Azure Resource Graph quickstart queries
-This repo contains all currently available Azure Resource Graph queries contributed by the community.
+This repo contains all currently available Azure Resource Graph queries contributed by ShareGate and the community.
 
 ## About source code in this repository
 * Query code goes under the the right `queries` folder.
