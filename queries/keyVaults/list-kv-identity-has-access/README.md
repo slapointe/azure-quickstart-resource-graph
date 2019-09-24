@@ -1,0 +1,1 @@
+This query only works in Portal, not in other clients.

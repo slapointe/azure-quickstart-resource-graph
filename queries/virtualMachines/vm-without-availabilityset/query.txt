@@ -1,0 +1,2 @@
+where type =~ 'Microsoft.Compute/virtualMachines'
+| where properties.availabilitySet.id == ''

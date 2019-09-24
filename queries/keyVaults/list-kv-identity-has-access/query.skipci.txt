@@ -1,0 +1,6 @@
+where type =~ "Microsoft.Keyvault/vaults"
+| extend p=todynamic(properties)
+| extend policies=todynamic(tostring(p.accessPolicies))
+| mvexpand policy = policies
+| where tostring(policy.objectId) == '00000000-0000-0000-0000-000000000000'
+| project name, resourceGroup
