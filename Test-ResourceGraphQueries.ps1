@@ -1,7 +1,7 @@
 [CmdletBinding()]
 param(
     [string]
-    $folderToTest = $PSScriptRoot
+    $FolderToTest = $PSScriptRoot
 )
 $ErrorActionPreference = 'Stop'
 
@@ -12,15 +12,17 @@ if(-not (Test-Path $settingsFilename)) {
 }
 $settings = Get-Content -Path $settingsFilename -Raw | ConvertFrom-Json
 
-$queries = Get-ChildItem $folderToTest\query.txt -Recurse
+$queries = Get-ChildItem -Path $FolderToTest\query.txt -Recurse
 
 $queries | ForEach-Object {
     $query = ((Get-Content -Path $_.FullName -Raw) -replace '\n\d|\n|\r', ' ') -replace '"', '\"'
     $queryName = $_.Directory.Name
-    Write-Host "Processing: $queryName"
-    Write-Verbose "$queryName : $query"
-    az graph query -q "$query" --subscription $settings.subscriptionId --first 1 | Out-Null
+    Write-Host -Message "Processing: $queryName"
+    Write-Verbose -Message "'$queryName' query: $query"
+    $result = az graph query -q "$query" --subscription $settings.subscriptionId --first 1
+    # do not put anything between the graph call and the if statement
     if (! $?) {
         throw "Error during execution of: $queryName\n\nQuery: $query"
     }
+    Write-Verbose -Message ("'$queryName' output:{0}{1}" -f [Environment]::NewLine, ($result -join [Environment]::NewLine))
 }

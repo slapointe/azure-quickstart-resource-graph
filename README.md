@@ -7,6 +7,7 @@ This repo contains all currently available Azure Resource Graph queries contribu
 * Create a folder for the service it concerns if not it does not yet exists
 * Create a folder for your query (all lower case with dases instead of spaces)
 * The query goes in a `query.txt` file
+* Create a README.md file to provide a title/description of what the query does
 * (On Windows) Run `Test-ResourceGraphQueries.ps1` to test the queries before creating a PR.
 * You can place your query code in this repository by creating a PR.
 
