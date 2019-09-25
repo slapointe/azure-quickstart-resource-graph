@@ -20,4 +20,8 @@ This repo contains all currently available Azure Resource Graph queries contribu
 * [Install Azure CLI](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli?view=azure-cli-latest)
 * Install Azure Resource Graph extension (`az extension add --name resource-graph`)
 * az login
-* in a powershell window, run `.\Test-ResourceGraphQueries.ps1` for all queries or `.\Test-ResourceGraphQueries.ps1 -FolderToTest queries\generic\count-azure-resources` for one in particular
+
+## Execute CI tests
+In a PowerShell session, run `.\Test-ResourceGraphQueries.ps1` for all queries
+
+or `.\Test-ResourceGraphQueries.ps1 -FolderToTest 'queries\generic\count-azure-resources'` for one in particular
