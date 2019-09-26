@@ -19,7 +19,14 @@ $queries | ForEach-Object {
     $queryName = $_.Directory.Name
     Write-Host -Message "Processing: $queryName"
     Write-Verbose -Message "'$queryName' query: $query"
-    $result = az graph query -q "$query" --subscription $settings.subscriptionId --first 1
+
+    $resultSize = if($PSCmdlet.MyInvocation.BoundParameters["Verbose"].IsPresent) {
+        100
+    } else {
+        1
+    }
+
+    $result = az graph query -q "$query" --subscription $settings.subscriptionId
     # do not put anything between the graph call and the if statement
     if (! $?) {
         throw "Error during execution of: $queryName\n\nQuery: $query"

@@ -1,0 +1,2 @@
+summarize count = count() by type, subscriptionId
+| order by subscriptionId, type asc

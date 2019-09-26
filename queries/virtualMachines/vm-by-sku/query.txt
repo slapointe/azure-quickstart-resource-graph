@@ -1,0 +1,3 @@
+where type =~ 'Microsoft.Compute/virtualMachines'
+| project sku = tostring(properties.hardwareProfile.vmSize)
+| summarize count = count() by sku
