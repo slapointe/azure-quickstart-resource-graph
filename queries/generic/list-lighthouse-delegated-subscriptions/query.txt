@@ -1,0 +1,1 @@
+distinct(tenantId), subscriptionId
