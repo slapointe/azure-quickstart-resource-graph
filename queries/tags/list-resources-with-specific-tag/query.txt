@@ -1,0 +1,2 @@
+where tags['environment'] =~ 'production'
+| project subscriptionId, resourceGroup, name
