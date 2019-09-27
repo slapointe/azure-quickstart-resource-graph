@@ -1,0 +1,3 @@
+extend state = aliases['Microsoft.Web/sites/state'] 
+| where type =~ 'Microsoft.Web/Sites' and state =~ 'Stopped' 
+| project name, kind, state
