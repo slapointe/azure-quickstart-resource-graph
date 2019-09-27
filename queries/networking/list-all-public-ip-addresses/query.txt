@@ -1,0 +1,3 @@
+where type contains 'publicIPAddresses' and isnotempty(properties.ipAddress)
+| project ipAddress = tostring(properties.ipAddress)
+| order by ipAddress asc
