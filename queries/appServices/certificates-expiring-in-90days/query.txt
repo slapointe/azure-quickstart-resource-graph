@@ -1,0 +1,4 @@
+where type =~ "Microsoft.Web/certificates" and properties.expirationDate <= now(90d)
+| extend expirationDate = tostring(properties.expirationDate)
+| project subscriptionId, resourceGroup, name, location, thumbprint = properties.thumbprint, expirationDate , friendlyName = properties.friendlyName, subjectName = properties.subjectName
+| sort by expirationDate asc
