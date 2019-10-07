@@ -1,0 +1,2 @@
+where type =~ 'Microsoft.Network/applicationGateways'
+| project subscriptionId, resourceGroup, name, sslCertificates = properties.sslCertificates

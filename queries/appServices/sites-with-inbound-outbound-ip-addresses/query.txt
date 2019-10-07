@@ -1,0 +1,3 @@
+where type =~ 'Microsoft.Web/sites'
+| extend inboundIpAddress = properties.inboundIpAddress, outboundIpAddresses = split(properties.outboundIpAddresses, ',')
+| project subscriptionId, resourceGroup, name, inboundIpAddress, outboundIpAddresses
