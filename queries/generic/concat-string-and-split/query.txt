@@ -1,0 +1,4 @@
+take 1
+| extend concatstr = strcat('value1', ',', 'value2', ',value3,value4' )
+| extend splitstr = split(concatstr, ',')
+| project concatstr, splitstr
