@@ -1,0 +1,3 @@
+where type =~ 'Microsoft.Compute/virtualMachines'
+and isempty(aliases['Microsoft.Compute/virtualMachines/storageProfile.osDisk.managedDisk.id'])
+| project subscriptionId, resourceGroup, name
