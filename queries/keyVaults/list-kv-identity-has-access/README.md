@@ -18,5 +18,3 @@ This query will return the resource and resource group names of key vaults that 
   }
 ]
 ```
-
-## NOTE: Because of mvexpand, this query only works in Portal at the moment, not in other clients.

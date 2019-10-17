@@ -1,0 +1,3 @@
+Resources
+| join (ResourceContainers | where 	type=~'Microsoft.Resources/Subscriptions' | project 	subscriptionName=name, subscriptionId) on subscriptionId
+| project subscriptionName, subscriptionId, resourceGroup, type, name
