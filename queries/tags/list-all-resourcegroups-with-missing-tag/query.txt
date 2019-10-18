@@ -1,0 +1,4 @@
+ResourceContainers
+| where type=~'Microsoft.Resources/Subscriptions/resourceGroups' and isempty(tags['environment'])
+| join kind = inner (ResourceContainers | where	type=~'Microsoft.Resources/Subscriptions' | project	subscriptionName=name, subscriptionId) on subscriptionId
+| project subscriptionId, subscriptionName, name, tags
