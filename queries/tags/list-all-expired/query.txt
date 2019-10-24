@@ -1,0 +1,5 @@
+Resources
+| union kind= inner ResourceContainers
+| extend expiresOn = todatetime(tags['expiresOn'])
+| where expiresOn <= now()
+| project name, type, expiresOn
