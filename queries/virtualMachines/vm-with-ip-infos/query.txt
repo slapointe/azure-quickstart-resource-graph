@@ -10,10 +10,10 @@ Resources
     | extend ipConfigsCount=array_length(properties.ipConfigurations) 
     | mv-expand ipconfig=properties.ipConfigurations 
     | where ipConfigsCount == 1 or ipconfig.properties.primary =~ 'true'
-    | project nicId = id, publicIpId = tostring(ipconfig.properties.publicIPAddress.id), privateIp = tostring(ipconfig.properties.privateIPAddress))
+    | project nicId = id, publicIpId = tostring(ipconfig.properties.publicIPAddress.id), privateIpAddress = tostring(ipconfig.properties.privateIPAddress))
 on nicId
 | project-away nicId1
-| summarize by vmId, vmName, vmSize, nicId, privateIp, publicIpId
+| summarize by vmId, vmName, vmSize, nicId, privateIpAddress, publicIpId
 | join kind=leftouter (
     Resources
     | where type =~ 'microsoft.network/publicipaddresses'
